@@ -49,6 +49,12 @@ public class ConectarMySql {
             e.printStackTrace();
         } finally {
             try {
+                if (rs != null)
+                    rs.close();            
+            
+                if (st != null)
+                    st.close();
+            
                 System.out.println("->> Desconectando do banco de dados.");
                 if (conn != null)
                     conn.close();
