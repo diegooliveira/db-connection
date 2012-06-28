@@ -1,0 +1,12 @@
+Prerequisito 
+
+    -> DEBIAN/UBUNTU
+    -> Instalação das bibliotecas
+        sudo apt-get install mysql-server
+        sudo apt-get install mysql-client
+        sudo apt-get install libmysqlclient-dev
+        
+        
+from-c
+
+    Programa que se conecta no mysql é faz um query no banco de dados.
