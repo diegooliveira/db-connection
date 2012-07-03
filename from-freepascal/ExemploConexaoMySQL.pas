@@ -1,7 +1,13 @@
 program ExemploConexaoMySQL;
 
+// Linkando com a biblioteca de acesso ao MySQL.
 uses mysql50;
 
+// Nome do banco de dados.
+const databaseName : pchar = 'mysql';
+const query : pchar = 'show tables;';
+
+// Variáveis para controle da conexão.
 var
   conexao : PMySQL;
   referencia_conexao : st_mysql;
@@ -9,30 +15,31 @@ var
   linha : MYSQL_ROW;
   
 begin
+    WriteLn('MySQL Connect Example.');
+    
+    // Inicializando o driver do banco de dados.
     mysql_init(PMYSQL(@referencia_conexao));
-    conexao := mysql_real_connect(
-        PMysql(@referencia_conexao),
-        'localhost',
-        'root',
-        'root',nil,3306,nil,0);
-
-    // Abrindo a conexão        
+    
+    // Abrindo a conexão, se houver problema para e imprime e sai.
+    WriteLn('->> Conectando no banco de dados');
+    conexao := mysql_real_connect(PMysql(@referencia_conexao), 'localhost', 
+    	'root', 'root', nil, 3306, nil, 0);
     if conexao = Nil then begin
-        Writeln (stderr,'Couldn''t connect to MySQL.');
-        Writeln (stderr,mysql_error(@referencia_conexao));
+        Writeln (stderr, 'Couldn''t connect to MySQL.');
+        Writeln (stderr, mysql_error(@referencia_conexao));
         halt(1);
     end;
         
     // Selecionando o banco de dados.
-    if mysql_select_db(conexao,'mysql') < 0 then begin
+    if mysql_select_db(conexao, databaseName) < 0 then begin
         Writeln (stderr,'Couldn''t select database mysql' );
         Writeln (stderr,mysql_error(@referencia_conexao));
                 
         halt(1);
     end;
     
-    writeln ('Executing query : ');
-    if (mysql_query(conexao,'show tables;') < 0) then begin
+    writeln ('->> Executando consulta: [ ',query,' ]');
+    if (mysql_query(conexao, query) < 0) then begin
         Writeln (stderr,'Query failed ');
         writeln (stderr,mysql_error(conexao));
         halt(1);

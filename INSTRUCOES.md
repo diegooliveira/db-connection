@@ -11,7 +11,7 @@ from-c
 
     Programa que se conecta no mysql é faz um query no banco de dados em C.
     
-    -> Instalação das bibliotecas
+    ### Bibliotecas a instalar
         sudo apt-get install mysql-server
         sudo apt-get install mysql-client
         sudo apt-get install libmysqlclient-dev
@@ -41,7 +41,46 @@ from-java
     
 
 from-freepascal
----------
+---------------
     
+    ### Bibliotecas a instalar
     
     sudo apt-get install fp-compiler fp-units-db
+    
+    ### Compilar
+    
+    fpc ExemploConexaoMySQL.pas
+    
+    ### Executar
+    
+    ./ExemploConexaoMySQL
+    
+    
+from-haskell
+------------
+
+    ### Bibliotecas a instalar
+
+    sudo apt-get install libghc6-hdbc-dev
+    cabal update
+    cabal install HDBC-mysql
+    
+    ### Compilar
+    
+    ghc --make ConectarMySQL.hs
+    
+    ### Executar
+    
+    ./ConectarMySQL
+    
+from-python
+-----------
+
+    ### Bibliotecas a instalar
+
+    sudo apt-get install python python-mysqldb
+    
+    ### Executar
+    
+    python ConectarMySQL.py
+    

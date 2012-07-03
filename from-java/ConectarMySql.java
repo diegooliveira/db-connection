@@ -22,12 +22,12 @@ public class ConectarMySql {
         String nomeDoUsuario = "root"; 
         String senha = "root";
         
-        // Objeto que guarda a conexão
+        // Objetos para controle da conexão.
         Connection conn = null;
         Statement st = null;
         ResultSet rs = null;
         try {
-            // Registrando o driver.
+            // Inicializando o driver do banco de dados.
             Class.forName(driver).newInstance();
             
             // Abrindo a conexão, se tiver falha pula para o tratamento de
