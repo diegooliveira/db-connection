@@ -84,3 +84,17 @@ from-python
     
     python ConectarMySQL.py
     
+    
+from-ruby
+---------
+
+    ### Bibliotecas a instalar
+
+    sudo apt-get install ruby rubygems libmysql-ruby
+    sudo gem install mysql
+    sudo gem update
+    
+    ### EXECUTAR
+    
+    ruby ConectaMySQL.rb
+    
